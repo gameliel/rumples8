@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Rumplesandco | Home</title>
     <!-- favicon -->
     <link rel="shortcut icon" type="image/jpg" href="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}"/>
@@ -18,15 +19,17 @@
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.css' ) }}">
     <link rel="stylesheet" type="text/css" href="{{ asset ('custom.css' ) }}">
     {{-- MDB link --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/mdb.min.css' ) }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
     <!-- animate css -->
     <script src="{{ asset ('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset ('assets/js/main.js' ) }}"></script>
-    <script type="text/javascript" src="{{ asset ('jquery.min.js' ) }}"></script>
-    
+    <script type="text/javascript" src="{{ asset ('js/jquery.min.js' ) }}"></script>
+
+
     <!-- CustomJs -->
     <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script>
-    
+
 </head>
 <body>
     <!-- firt section orange -->
@@ -66,7 +69,29 @@
                             <ul class="right-widget clearfix">
                                 <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> contact@rumples.co</a></li>
                                 <!--<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> </a></li>-->
-                                <li class="quote"><a href="">Login</a></li>
+                                @guest
+                                    @if(Route::has('login'))
+                                        <li class="quote"><a href="{{ route('login')}}">Login</a></li>
+                                    @endif
+                                @else
+                                <li class="nav-item dropdown">
+                                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                      {{ Auth::user()->name }}
+                                  </a>
+
+                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                                       document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+                                      </a>
+
+                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                          @csrf
+                                      </form>
+                                  </div>
+                                </li>
+                                @endguest
                             </ul>
                         </div>
                     </div> <!-- /.clearfix -->
@@ -74,25 +99,32 @@
             </div> <!-- /.top-header -->
 
 
-            
+
             <div class="main-menu-wrapper clearfix">
                 <div class="container clearfix">
                     <!-- Logo -->
                     <div class="logo float-left"><a href="{{ route('home')}}"><img src="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}" alt="Logo" width="200" height="65"></a></div>
 
-                    <div class="right-widget float-right">
-                        <form class="form-inline md-form mr-auto" style="margin-top: 29px;">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
-                          </form>
-                       </div> <!-- /.right-widget -->
+                    <div class="large-search right-widget float-right" style="margin-top: 29px;">
+                      <form class="form-inline md-form mr-auto">
+                          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                          <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
+                        </form>
+                    </div>
 
                     <!-- ============================ Theme Menu ========================= -->
                     <nav class="navbar-expand-lg float-left navbar-light" id="mega-menu-wrapper">
                         <button class="navbar-toggler float-right clearfix" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="navbar-toggler-icon"></i>
                         </button>
+
                         <div class="collapse navbar-collapse clearfix" id="navbarNav">
+                          <div class="mobile-search  right-widget float-right" style="margin-top: 29px;">
+                            <form class="form-inline md-form mr-auto">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
+                              </form>
+                           </div> <!-- /.right-widget -->
                           <ul class="navbar-nav nav " style="margin-top: -19px;">
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
                             <li class="nav-item dot-fix"><a class="nav-link" href="">Categories</a></li>
@@ -100,6 +132,9 @@
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('about')}}">About</a></li>
                           </ul>
 
+                          {{-- search --}}
+
+                          {{-- search ends here --}}
                         </div>
                     </nav>
                 </div> <!-- /.container -->
@@ -110,7 +145,7 @@
     </div>
 
     @yield('content')
-    
+
     <footer>
       <div class="container">
         <div class="row">
@@ -139,7 +174,7 @@
               T-shirts (964) <br>
               Jean (1129) <br>
               Belts (300) <br>
-              Jackets (300)</p> 
+              Jackets (300)</p>
           </div>
           <div class="col-md-3">
             <h4>Let’s stay in touch</h4>
@@ -160,11 +195,16 @@
 <script src="{{ asset('assets/js/fontawesome.js')}}"></script>
 <!-- fontawesome files -->
 <script src="{{ asset('assets/fontawesome/js/all.js')}}"></script>
-<script src='{{asset("assets/js/jquery.easing.1.3.js")}}'></script> 
+<script src='{{asset("assets/js/jquery.easing.1.3.js")}}'></script>
 <script src='{{asset("assets/js/camera.min.js")}}'></script>
 <script src="{{asset('assets/js/popper.min.js')}}"></script>
 <!-- Language Stitcher -->
 <script src="{{asset('assets/js/jquery.polyglot.language.switcher.js')}}"></script>
+<script src="{{ asset('js/jquery.min.js')}}"></script>
+{{-- <script src="{{ asset('js/popper.js')}}"></script> --}}
+<script src="{{ asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/main.js')}}"></script>
+@yield('scripts')
 
 </body>
 </html>

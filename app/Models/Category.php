@@ -11,9 +11,16 @@ class Category extends Model
     protected $tables = "categories";
 
     protected $fillable = [
-        'name', 
+        'parent_id',
+        'name',
         'slug',
+        'featured',
     ];
+
+    public function children()
+    {
+    return $this->hasMany('App\Models\Category', 'parent_id');
+    }
 
     use HasFactory;
 }

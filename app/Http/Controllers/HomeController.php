@@ -10,9 +10,16 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $categories = Category::all();
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
         $products = Product::all();
-        return view('front.index', compact('categories', 'products'));
+        return view('front.index', compact('categories', 'products', 'trending'));
+    }
+
+    public function detail($id)
+    {
+        $product = Product::find($id);
+        return view('front.detail', compact('product'));
     }
     public function about(){
         return view('about');

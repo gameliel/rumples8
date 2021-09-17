@@ -1,5 +1,5 @@
 /* ========================================================
-                          Extra screen 
+                          Extra screen
 ===========================================================*/
 @media (max-width: 991px)
 #mega-menu-wrapper .navbar-collapse {
@@ -16,7 +16,7 @@
       width: 100%;
     }
   }
-  
+
   @media screen and (min-width: 900px){
     .container{
       width: 33.33333%;
@@ -26,7 +26,7 @@
     .dropdown_spec .personal_details .userpic {
        width: 37% !important;
        margin-bottom: 12px !important;
-     } 
+     }
      .instagram {
        margin-top: -33rem !important;
      }
@@ -77,7 +77,7 @@
        margin-left: 298px !important;
        display: block !important;
        position: inherit !important;
-     }  
+     }
      .cart-icon {
        margin-left: -206px !important;
        margin-top: -77px !important;
@@ -209,7 +209,7 @@
     }
     nav ul input::placeholder{
         font-size: 12px;
-        padding-left: 19px;  
+        padding-left: 19px;
         margin-top: -32px;
     }
     .fa-cart-arrow-down{
@@ -249,7 +249,7 @@
   nav ul .form-group{
       margin-top: 0px;
   }
-  
+
   .form-control:focus {
       color: #212529 !important;
       background-color: #fff !important;
@@ -272,13 +272,13 @@
       font-size: 16px;
       border: none;
     }
-    
+
     /* The container <div> - needed to position the dropdown content */
     .dropdown {
       position: relative;
       display: inline-block;
     }
-    
+
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
       display: none;
@@ -297,7 +297,7 @@
       text-decoration: none;
       display: block;
     }
-    
+
   }
 
   @media screen and (min-width: 929px) and (max-width: 991px){
@@ -403,7 +403,7 @@
         }
         nav ul input::placeholder{
             font-size: 12px;
-            padding-left: 19px;  
+            padding-left: 19px;
             margin-top: -32px;
         }
         .fa-cart-arrow-down{
@@ -443,7 +443,7 @@
       nav ul .form-group{
           margin-top: 0px;
       }
-      
+
       .form-control:focus {
           color: #212529 !important;
           background-color: #fff !important;
@@ -466,13 +466,13 @@
           font-size: 16px;
           border: none;
         }
-        
+
         /* The container <div> - needed to position the dropdown content */
         .dropdown {
           position: relative;
           display: inline-block;
         }
-        
+
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
           display: none;
@@ -623,7 +623,7 @@
         }
         nav ul input::placeholder{
             font-size: 12px;
-            padding-left: 19px;  
+            padding-left: 19px;
             margin-top: -32px;
         }
         .fa-cart-arrow-down{
@@ -663,7 +663,7 @@
       nav ul .form-group{
           margin-top: 0px;
       }
-      
+
       element.style {
       }
       .form-control:focus {
@@ -688,13 +688,13 @@
           font-size: 16px;
           border: none;
         }
-        
+
         /* The container <div> - needed to position the dropdown content */
         .dropdown {
           position: relative;
           display: inline-block;
         }
-        
+
         /* Dropdown Content (Hidden by Default) */
         .dropdown-content {
           display: none;
@@ -826,7 +826,7 @@
   .content form{
 
 
-    
+
         width: 100%;
         margin-left: 21rem !important;
         margin-top: -5px !important;
@@ -1210,7 +1210,7 @@
     .content form input::placeholder{
         font-size: 10px;
     }
-}   
+}
 @media screen and (min-width: 801px) and (max-width: 991px){
    .newsletter .letter {
     border-radius: 0px;
@@ -1257,7 +1257,7 @@
     .content form input::placeholder{
         font-size: 10px;
     }
-}   
+}
 
 @media screen and (min-width: 1001px) and (max-width: 1100px){
        .whatsapp{
@@ -1423,10 +1423,30 @@
                    End of extra screen
 ===========================================================  */
 
-/* ======================================================== 
+/* ========================================================
                     Mobile screen
 =========================================================== */
 @media screen and (min-width: 360px) and (max-width: 441px){
+    .main-menu-wrapper .large-search{
+        display: none;
+    }
+    nav .navbar-collapse  ul > li > ul{
+        position: inherit !important;
+        transform: translate3d(-25px, 122px, 0px);
+        top: -57px !important;
+        will-change: transform;
+        margin-right: 0;
+        margin-left: -5px !important;
+        padding-left: 15px;
+    }
+    #mega-menu-wrapper .nav>li>a:hover {
+    position: relative;
+    font-size: 19px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #ff8001 !important;
+    background: transparent;
+  }
     nav .mobile-search{
         display: block;
      }
@@ -1538,7 +1558,7 @@
    }
    nav ul input::placeholder{
        font-size: 12px;
-       padding-left: 19px;  
+       padding-left: 19px;
        margin-top: -32px;
    }
    /* .fa-cart-arrow-down{
@@ -1724,7 +1744,7 @@
         font-size: 11px;
     }
     .bbtn{
-        margin-top: 9px; 
+        margin-top: 9px;
     }
     .header >h1{
         font-size: 19px;
@@ -1831,7 +1851,6 @@
         margin-top: 4rem;
     }
     .content .brp .content-overlay{
-        background: rgb(39 33 33 / 70%);
         position: absolute;
         height: 95.3%;
         width: 80%;
@@ -1841,15 +1860,21 @@
         top: 0;
         bottom: 0;
         right: 0;
-        opacity: 1;
         -webkit-transition: all 0.4s ease-in-out 0s;
         -moz-transition: all 0.4s ease-in-out 0s;
         transition: all 0.4s ease-in-out 0s;
         border-radius: 15px;
       }
       .content .content-details{
-        margin-left: 5rem;
+        margin-left: 1rem;
         margin-top: -12px;
+      }
+      .load-mores {
+        padding-bottom: 7.5rem;
+        margin-left: 71px;
+      }
+      .header h1{
+        margin-left: 58px;
       }
       .content-details .fa-heart {
         margin-left: -245px !important;
@@ -1870,7 +1895,7 @@
         margin-top: -2px;
       }
       .prod-detail-card .additional-prod{
-        font-size: 10px; 
+        font-size: 10px;
       }
       .prod-detail-card .alt-prod{
         margin-top: -50px;
@@ -1880,11 +1905,11 @@
       }
       .prod-detail-card .alt-prod .btn{
         margin-bottom: -180px;
-        margin-left: -150px; 
+        margin-left: -150px;
       }
       .prod-detail-card .alt-prod2 .btn{
         margin-bottom: -150px;
-        margin-left: -70px; 
+        margin-left: -70px;
         height: 30px;
       }
       .prod-detail-card .alt-prod .cart-prod-price,
@@ -1960,7 +1985,7 @@
         background-repeat: no-repeat;
         background-size: 4% !important;
         margin-top: 12px;
-    }  
+    }
     .altnav .myspec_hoverstate1 li {
         margin-left: 20px !important;
         margin-top: -9px;
@@ -2110,7 +2135,7 @@
         font-size: 11px;
     }
     .bbtn{
-        margin-top: 9px; 
+        margin-top: 9px;
     }
     .header >h1{
         font-size: 19px;
@@ -2348,7 +2373,7 @@
         font-size: 11px;
     }
     .bbtn{
-        margin-top: 9px; 
+        margin-top: 9px;
     }
     .header >h1{
         font-size: 19px;

@@ -77,7 +77,7 @@
                                       {{ Auth::user()->name }}
                                   </a>
 
-                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <div class="dropdown-menu dropdown-menu-right" style="margin-top: 27px;" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
@@ -125,7 +125,34 @@
                            </div> <!-- /.right-widget -->
                           <ul class="navbar-nav nav " style="margin-top: -19px;">
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
-                            <li class="nav-item dot-fix"><a class="nav-link" href="">Categories</a></li>
+                            <li class="nav-item dot-fix dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Categories</a>
+                                <ul class="dropdown-menu cate-dropdown" aria-labelledby="navbarDropdown">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-7 col-lg-7 col-md-7 ">
+                                                <div class="row">
+                                                    @foreach ($categories as $category)
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 navbarhead">
+                                                      <h5>{{$category->name}}</h5>
+                                                      @if($category->children)
+                                                        @foreach ($category->children as $child)
+                                                            <li><a href="{% url 'category_detail' subcategory.slug %}">{{ $child->name }}</a></li>
+                                                        @endforeach
+                                                      @endif
+                                                    </div>
+                                                    @endforeach
+                                                  </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3">
+                                            @foreach ($trending as $item)
+                                                <h4>{{$item->name}}</h4>
+                                            @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
                             <li class="nav-item dot-fix"><a class="nav-link" href="">Blog</a></li>
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('about')}}">About</a></li>
                           </ul>

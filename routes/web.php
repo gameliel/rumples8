@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SizeController;
+use App\Http\Controllers\frontend\CartController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +19,21 @@ use App\Http\Controllers\Admin\SizeController;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', function(){return view('front.about');})->name('about');
 Route::get('/delivery', function(){return view('front.delivery');})->name('delivery');
 Route::get('/terms', function(){return view('front.terms');})->name('terms');
 Route::get('/faq', function(){return view('front.faq');})->name('faq');
 Route::get('/returns', function(){return view('front.returns');})->name('returns');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('detail/{id}', [HomeController::class, 'detail']);
+
+
+Auth::routes();
 
 // authenticated users
-Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::post('/add-to-cart', [CartController::class, 'addProduct']);
+});
 
 // admin routes
 Route::middleware(['auth', 'rumpadm'])->group(function (){

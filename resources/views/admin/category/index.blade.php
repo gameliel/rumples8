@@ -24,6 +24,9 @@
                     <th>
                       Slug
                     </th>
+                    <th>
+                      Featured
+                    </th>
                   </thead>
                   <tbody>
                     @foreach ($categories as $cate)
@@ -31,6 +34,7 @@
                         <td>{{ $cate->id }}</td>
                         <td>{{ $cate->name }}</td>
                         <td>{{ $cate->slug }}</td>
+                        <td>{{ $cate->featured }}</td>
                         <td class="td-actions text-right">
                           <a href="{{ url('edit-cate/'.$cate->id) }}" type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
                             <i class="material-icons">edit</i>

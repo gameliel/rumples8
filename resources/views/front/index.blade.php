@@ -9,7 +9,7 @@
       <div class="text-background" style="margin-left: 114px; margin-top: 135px;">
         <h2 class="col-md-7 mx-auto text-black " style="font-size: 50px;">Up to 30% off </h2>
         <p class="h5 col-md-7 mx-auto pb-5 mb-5 text-black-50 aa">Hello..  Save on your first order on our  first grade Okrika Shirts when you sign up</p>
-        <div class="load-more">
+        <div class="load-mores">
           <a href="#product" class="btn btn-outline-primary load-more">START PICKING</a>
       </div>
       </div>
@@ -28,7 +28,7 @@
 <!-- end of carusel -->
 <section class="trending-pro container">
   <div class="header">
-    <h1>TRENDING PICK</h1>
+    <h1 style="color: #ffffff">TRENDING PICK</h1>
   </div>
   <div class="row first-row">
     @foreach ($products as $product)
@@ -48,7 +48,7 @@
           <div class="align-content-center content-details fadeIn-bottom">
             {{-- <a href="#"><img class="order-3 p-2" src="{{ asset('assets/img/SVG/view.svg') }}" style="width: auto%; margin-left: 56px;" alt=""></a>
             <a href="#"><img class="order-2 p-2" src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style=" margin-left: 140px; margin-top: -74px;" alt=""></a> --}}
-            <a href="#"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
+            <a href="{{ url('detail/'.$product->id)}}"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
             <a href="#"><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
           </div>
         </div>
