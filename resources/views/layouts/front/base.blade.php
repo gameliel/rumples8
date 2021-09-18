@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/styleo.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/screen.css') }}">
-    <link rel="stylesheet" href="{{ asset('main.css' ) }}">
+    {{-- <link rel="stylesheet" href="{{ asset('main.css' ) }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/menu.css' ) }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css' ) }}">
-    {{-- <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css' ) }}"> --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css' ) }}">
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/css/all.css' ) }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset ('custom.css' ) }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset ('custom.css' ) }}"> --}}
     {{-- MDB link --}}
     <link rel="stylesheet" type="text/css" href="{{ asset ('assets/css/mdb.min.css' ) }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="{{ asset ('jquery.min.js' ) }}"></script>
 
     <!-- CustomJs -->
-    <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script> --}}
 
 </head>
 <body>

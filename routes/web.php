@@ -19,11 +19,21 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/about', function(){return view('front.about');})->name('about');
-Route::get('/delivery', function(){return view('front.delivery');})->name('delivery');
-Route::get('/terms', function(){return view('front.terms');})->name('terms');
-Route::get('/faq', function(){return view('front.faq');})->name('faq');
-Route::get('/returns', function(){return view('front.returns');})->name('returns');
+Route::get('/about', function () {
+    return view('front.about');
+})->name('about');
+Route::get('/delivery', function () {
+    return view('front.delivery');
+})->name('delivery');
+Route::get('/terms', function () {
+    return view('front.terms');
+})->name('terms');
+Route::get('/faq', function () {
+    return view('front.faq');
+})->name('faq');
+Route::get('/returns', function () {
+    return view('front.returns');
+})->name('returns');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('detail/{id}', [HomeController::class, 'detail']);
 
@@ -32,11 +42,11 @@ Auth::routes();
 
 // authenticated users
 Route::middleware(['auth'])->group(function () {
-    Route::post('/add-to-cart', [CartController::class, 'addProduct']);
+    Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name("user_add_to_cart");
 });
 
 // admin routes
-Route::middleware(['auth', 'rumpadm'])->group(function (){
+Route::middleware(['auth', 'rumpadm'])->group(function () {
     Route::get('/rumpadms', 'Admin\DashboardController@dashboard')->name('dash');
     // category routes
     Route::get('/categories', 'Admin\CategoryController@index');
