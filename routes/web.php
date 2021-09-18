@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/add-to-cart', [CartController::class, 'addProduct']);
     Route::get('/findspec', [findmyspecController::class, 'addSpec']);
     Route::post('/insert-spec', [findmyspecController::class, 'insert']);
-    Route::get('/myspec/{Auth::user()}', [findmyspecController::class, 'myspec']);
+    Route::get('/myspec/{auth}', [findmyspecController::class, 'myspec']);
 });
 
 // admin routes

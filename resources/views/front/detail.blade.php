@@ -38,7 +38,7 @@
                   <!-- product description -->
                   <p>{{ $product->short_description }}</p>
                     <input type="hidden" value="{{ $product->id }}" class="prod_id">
-                    <button class="btn btn-primary btn-md my-0 p addToCartBtn" >
+                    <button class="btn btn-primary btn-md my-0 p addToCartBtn" data-product-id="{{$product->id}}">
                       <i class="fas fa-dolly pro_cart-btn"></i>
                       add to cart
                     </button>
@@ -57,30 +57,54 @@
 
 @section('scripts')
 <script>
-    $(document).ready(function (){
+    // $(document).ready(function (){
 
-        $('.addToCartBtn').click(function (e) {
-            e.preventDefault();
+    //     $('.addToCartBtn').click(function (e) {
+    //         e.preventDefault();
 
-            var product_id = $(this).closest('.product_data').find('.prod_id').val();
+    //         var product_id = $(this).closest('.product_data').find('.prod_id').val();
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                method: "POST",
-                url: "/add-to-cart",
-                data: {
-                    'product_id': product_id,
-                },
-                success: function (response) {
-                    alert(response.status);
-                }
-            });
+    //         $.ajaxSetup({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             }
+    //         });
+    //         $.ajax({
+    //             method: "POST",
+    //             url: "/add-to-cart",
+    //             data: {
+    //                 'product_id': product_id,
+    //             },
+    //             success: function (response) {
+    //                 alert(response.status);
+    //             }
+    //         });
 
-        });
-    });
+    //     });
+    // });
 </script>
 @endsection
+
+@push('script')
+    <script>
+        let addToCartBtn = document.querySelector(".addToCartBtn");
+        addToCartBtn.addEventListener("click", function(e){
+            e.preventDefault();
+            let productId = addToCartBtn.getAttribute("data-product-id")
+            let url = "{{route('user_add_to_cart')}}"
+            let token =  document.head.querySelector('meta[name="csrf-token"]');
+            let data = {
+                "product_id": productId,
+                "_token":token.content
+            };
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json()).then((item) => console.log(item.message));
+        })
+
+    </script>
+@endpush
