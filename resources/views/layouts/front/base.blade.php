@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Rumplesandco | Home</title>
     <!-- favicon -->
     <link rel="shortcut icon" type="image/jpg" href="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}"/>
@@ -27,7 +28,7 @@
 
     <!-- CustomJs -->
     <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script>
-
+    @yield('style')
 </head>
 <body>
     <!-- firt section orange -->
@@ -125,9 +126,9 @@
                            </div> <!-- /.right-widget -->
                           <ul class="navbar-nav nav " style="margin-top: -19px;">
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
-                            <li class="nav-item dot-fix dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Categories</a>
-                                <ul class="dropdown-menu cate-dropdown" aria-labelledby="navbarDropdown">
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link "onclick="myFunction()  role="button">Categories</a>
+                                <ul id="myDropdown" class="dropdown-content">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-xl-7 col-lg-7 col-md-7 ">
@@ -137,7 +138,7 @@
                                                       <h5>{{$category->name}}</h5>
                                                       @if($category->children)
                                                         @foreach ($category->children as $child)
-                                                            <li><a href="{% url 'category_detail' subcategory.slug %}">{{ $child->name }}</a></li>
+                                                            <li><a href="{{ url('category_detail/'.$child->slug) }}">{{ $child->name }}</a></li>
                                                         @endforeach
                                                       @endif
                                                     </div>
@@ -148,6 +149,9 @@
                                             @foreach ($trending as $item)
                                                 <h4>{{$item->name}}</h4>
                                             @endforeach
+                                            <a href="{{ url('findspec')}}" class="btn btn-primary btn-lg">
+                                                Find spec
+                                            </a>
                                             </div>
                                         </div>
                                     </div>
@@ -193,12 +197,9 @@
           </div>
           <div class="col-md-3">
             <h4>Popular Categories</h4>
-            <p>Shirts (2405) <br>
-              Trousers (1278) <br>
-              T-shirts (964) <br>
-              Jean (1129) <br>
-              Belts (300) <br>
-              Jackets (300)</p>
+            @foreach ($categories as $category)
+            <p><a href="{{ url('category_detail/'.$category->slug)}}">{{$category->name}}</a></p>
+            @endforeach
           </div>
           <div class="col-md-3">
             <h4>Let’s stay in touch</h4>
@@ -228,6 +229,10 @@
 {{-- <script src="{{ asset('js/popper.js')}}"></script> --}}
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{-- <script>
+  swal("Welcome to rumplesandco.")
+</script> --}}
 
 </body>
 </html>

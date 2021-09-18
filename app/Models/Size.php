@@ -11,7 +11,7 @@ class Size extends Model
     protected $tables = "sizes";
 
     protected $fillable = [
-        'name', 
+        'name',
         'slug',
     ];
 

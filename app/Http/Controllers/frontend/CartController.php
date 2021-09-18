@@ -16,7 +16,7 @@ class CartController extends Controller
 
         if(Auth::check())
         {
-            $prod_check = Product::where('id', '$product_id')->exists();
+            $prod_check = Product::where('id', '$product_id')->first();
 
             if($prod_check)
             {

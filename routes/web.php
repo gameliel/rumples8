@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\frontend\CartController;
+use App\Http\Controllers\useraccess\findmyspecController;
 use App\Http\Controllers\HomeController;
 
 /*
@@ -19,13 +20,14 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/about', function(){return view('front.about');})->name('about');
-Route::get('/delivery', function(){return view('front.delivery');})->name('delivery');
-Route::get('/terms', function(){return view('front.terms');})->name('terms');
-Route::get('/faq', function(){return view('front.faq');})->name('faq');
-Route::get('/returns', function(){return view('front.returns');})->name('returns');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/delivery', [HomeController::class, 'deliveryy'])->name('delivery');
+Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/returns', [HomeController::class, 'returns'])->name('returns');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('detail/{id}', [HomeController::class, 'detail']);
+Route::get('category_detail/{slug}', [HomeController::class, 'viewcategory']);
 
 
 Auth::routes();
@@ -33,6 +35,9 @@ Auth::routes();
 // authenticated users
 Route::middleware(['auth'])->group(function () {
     Route::post('/add-to-cart', [CartController::class, 'addProduct']);
+    Route::get('/findspec', [findmyspecController::class, 'addSpec']);
+    Route::post('/insert-spec', [findmyspecController::class, 'insert']);
+    Route::get('/myspec/{Auth::user()}', [findmyspecController::class, 'myspec']);
 });
 
 // admin routes

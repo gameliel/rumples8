@@ -19,21 +19,50 @@ class HomeController extends Controller
     public function detail($id)
     {
         $product = Product::find($id);
-        return view('front.detail', compact('product'));
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.detail', compact('product', 'categories', 'trending'));
     }
     public function about(){
-        return view('about');
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.about', compact('categories', 'trending'));
     }
     public function delivery(){
-        return view('delivery');
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.delivery', compact('categories', 'trending'));
     }
     public function terms(){
-        return view('terms');
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.terms', compact('categories', 'trending'));
     }
     public function faq(){
-        return view('faq');
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.faq', compact('categories', 'trending'));
     }
     public function returns(){
-        return view('returns');
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+        return view('front.returns', compact('categories', 'trending'));
+    }
+
+    public function viewcategory($slug){
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+
+        if(Category::where('slug', $slug)->exists())
+        {
+           $cate = Category::where('slug', $slug)->first();
+           $products = Product::where('category_id', $cate->id)->where('featured', 1)->get();
+
+           return view('front.cate_detail', compact('categories', 'trending', 'cate', 'products'));
+        }
+        else
+        {
+            return redirect('/')->with('status', 'slug does not exist');
+        }
     }
 }

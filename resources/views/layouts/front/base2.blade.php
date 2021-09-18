@@ -24,12 +24,11 @@
     <!-- animate css -->
     <script src="{{ asset ('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset ('assets/js/main.js' ) }}"></script>
-    <script type="text/javascript" src="{{ asset ('js/jquery.min.js' ) }}"></script>
-
+    <script type="text/javascript" src="{{ asset ('jquery.min.js' ) }}"></script>
 
     <!-- CustomJs -->
     <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script>
-
+    @yield('style')
 </head>
 <body>
     <!-- firt section orange -->
@@ -79,7 +78,7 @@
                                       {{ Auth::user()->name }}
                                   </a>
 
-                                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <div class="dropdown-menu dropdown-menu-right" style="margin-top: 27px;" aria-labelledby="navbarDropdown">
                                       <a class="dropdown-item" href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
@@ -127,7 +126,37 @@
                            </div> <!-- /.right-widget -->
                           <ul class="navbar-nav nav " style="margin-top: -19px;">
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
-                            <li class="nav-item dot-fix"><a class="nav-link" href="">Categories</a></li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link "onclick="myFunction()  role="button">Categories</a>
+                                <ul id="myDropdown" class="dropdown-content">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-xl-7 col-lg-7 col-md-7 ">
+                                                <div class="row">
+                                                    @foreach ($categories as $category)
+                                                    <div class="col-lg-3 col-md-3 col-sm-12 navbarhead">
+                                                      <h5>{{$category->name}}</h5>
+                                                      @if($category->children)
+                                                        @foreach ($category->children as $child)
+                                                            <li><a href="{{ url('category_detail/'.$child->slug) }}">{{ $child->name }}</a></li>
+                                                        @endforeach
+                                                      @endif
+                                                    </div>
+                                                    @endforeach
+                                                  </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3">
+                                            @foreach ($trending as $item)
+                                                <h4>{{$item->name}}</h4>
+                                            @endforeach
+                                            <a href="{{ url('findspec')}}" class="btn btn-primary btn-lg">
+                                                Find spec
+                                            </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
                             <li class="nav-item dot-fix"><a class="nav-link" href="">Blog</a></li>
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('about')}}">About</a></li>
                           </ul>
@@ -204,6 +233,10 @@
 {{-- <script src="{{ asset('js/popper.js')}}"></script> --}}
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{{-- <script>
+  swal("Welcome to rumplesandco.")
+</script> --}}
 @yield('scripts')
 
 </body>
