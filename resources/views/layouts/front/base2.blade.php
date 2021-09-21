@@ -24,11 +24,41 @@
     <!-- animate css -->
     <script src="{{ asset ('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset ('assets/js/main.js' ) }}"></script>
-    <script type="text/javascript" src="{{ asset ('jquery.min.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset ('/js/jquery.min.js' ) }}"></script>
 
     <!-- CustomJs -->
-    <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset ('/js/custom.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset ('/js/cart.js' ) }}"></script>
+    <style>
+        .cart-circle{
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            border-radius: 100px;
+        }
+        .cart-circle img{
+            margin-left: 14px;
+            padding-top: 12px;
+        }
+        .cart-circle .cart-count{
+            width: 18px;
+            height: 18px;
+            background: red;
+            border-radius: 32px;
+            margin-left: 33px;
+            margin-top: -45px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+        .cart-circle p{
+            margin-top: -24px;
+            margin-left: 38px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+    </style>
     @yield('style')
+    @stack("style")
 </head>
 <body>
     <!-- firt section orange -->
@@ -104,9 +134,16 @@
                     <!-- Logo -->
                     <div class="logo float-left"><a href="{{ route('home')}}"><img src="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}" alt="Logo" width="200" height="65"></a></div>
 
-                    <div class="large-search right-widget float-right" style="margin-top: 29px;">
+                    <div class="large-search right-widget float-right" style="margin-top: 29px; display: inline-flex;">
+                        <div class="cart-circle">
+                            <a href="{{ route('cart') }}">
+                            <img src="{{ asset('assets/img/SVG/cart.svg')}}" alt="">
+                            </a>
+                            <div class="cart-count"></div>
+                            <p>0</p>
+                        </div>
                       <form class="form-inline md-form mr-auto">
-                          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                          {{-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> --}}
                           <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
                         </form>
                     </div>

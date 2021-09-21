@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Category;
 use App\Models\Product;
+use illuminate\Support\Facades\Auth;
+use App\Models\Cart;
 
 use Illuminate\Http\Request;
 
@@ -15,6 +17,28 @@ class HomeController extends Controller
         $products = Product::all();
         return view('front.index', compact('categories', 'products', 'trending'));
     }
+
+    // add to cart here
+
+    public function addProduct(Request $request)
+    {
+        $user = Auth::user();
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json(["error" => "Product not found"], 404);
+        }
+        $checkCart = Cart::whereProductId($product->id)->whereUserId($user->id)->first();
+        if ($checkCart) {
+            return response()->json(["message" => "Item already in your cart "]);
+        }
+        $cart = Cart::create([
+            "user_id" => $user->id,
+            "product_id" => $product->id
+        ]);
+        return response()->json(["message" => "Product added to cart successfully"], 200);
+    }
+
+    // end of add to cart
 
     public function detail($id)
     {

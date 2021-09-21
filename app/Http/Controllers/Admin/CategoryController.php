@@ -34,7 +34,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('admin/category/edit', compact('category'));
+        $categories = Category::all();
+        return view('admin/category/edit', compact('category', 'categories'));
     }
 
     public function update(Request $request, $id)

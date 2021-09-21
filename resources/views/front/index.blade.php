@@ -37,7 +37,7 @@
           <div class="brp">
             <div class="content-overlay"></div>
           <div class="pimg">
-            <img src="{{ asset('assets/uploads/products/' .$product->image)}}" class="d-block w-100" alt="image here">
+            <img src="{{ asset('assets/uploads/products/' .$product->image)}}" class="d-block w-100" height="200px;" alt="image here">
           </div>
           <div class="text-center">
           <p class="title">{{$product->name}}</p>
@@ -49,7 +49,7 @@
             {{-- <a href="#"><img class="order-3 p-2" src="{{ asset('assets/img/SVG/view.svg') }}" style="width: auto%; margin-left: 56px;" alt=""></a>
             <a href="#"><img class="order-2 p-2" src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style=" margin-left: 140px; margin-top: -74px;" alt=""></a> --}}
             <a href="{{ url('detail/'.$product->id)}}"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
-            <a href="#"><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
+            <a href="{{ route('cart')}}" class="addToCartBtn" data-product-id="{{$product->id}}" ><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
           </div>
         </div>
       </div>
@@ -126,3 +126,27 @@ Your browser does not support HTML5 video.
 </div>
 
 @endsection
+
+@push('script')
+    <script>
+        let addToCartBtn = document.querySelector(".addToCartBtn");
+        addToCartBtn.addEventListener("click", function(e){
+            e.preventDefault();
+            let productId = addToCartBtn.getAttribute("data-product-id")
+            let url = "{{route('user_add_to_cart')}}"
+            let token =  document.head.querySelector('meta[name="csrf-token"]');
+            let data = {
+                "product_id": productId,
+                "_token":token.content
+            };
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json()).then((item) => alert(item.message));
+        })
+
+    </script>
+@endpush

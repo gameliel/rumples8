@@ -18,14 +18,17 @@ class Product extends Model
         'price',
         'discount_price',
         'SKU',
+        'alteration',
+        'alteration_price',
+        'laundry',
+        'laundry_price',
         'stock_status',
         'featured',
-        // 'quantity',
+        'quantity',
         'image',
         'category_id',
         'size_id',
         'brand_id',
-
     ];
 
     use HasFactory;

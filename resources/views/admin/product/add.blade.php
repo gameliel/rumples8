@@ -77,6 +77,40 @@
                         </div>
                       </div>
                       <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">Accept alteration</label>
+                                <select class="form-control" name="alteration" aria-label="Default select example">
+                                  <option value="0">No</option>
+                                  <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">alteration price</label>
+                                <input type="number" name="alteration_price" class="form-control" id="name">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">Accept Laundry</label>
+                                <select class="form-control" name="laundry" aria-label="Default select example">
+                                  <option value="0">No</option>
+                                  <option value="1">Yes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="name">Laundry price</label>
+                                <input type="number" name="laundry_price" class="form-control" id="name">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row">
                         <div class="col-lg-4">
                           <div class="form-group">
                             <label for="name">Categories</label>

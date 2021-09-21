@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label class="label" for="password">{{ __('Password') }}</label>
-                        <input id="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                        <input id="password" class="form-control @error('password') is-invalid @enderror" type="password" name="password" required autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                         <label class="label" for="password">{{ __('Confirm Password') }}</label>
                         <input id="password-confirm" class="form-control" placeholder="Password" type="password" name="password_confirmation" required autocomplete="new-password">
                     </div>
-                
+
                     <div class="form-group">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">{{ __('Register') }}</button>
                     </div>

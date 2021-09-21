@@ -46,6 +46,10 @@ class ProductController extends Controller
         $products->price = $request->input('price');
         $products->discount_price = $request->input('discount_price');
         $products->SKU = $request->input('SKU');
+        $products->alteration = $request->input('alteration');
+        $products->alteration_price = $request->input('alteration_price');
+        $products->laundry = $request->input('laundry');
+        $products->laundry_price = $request->input('laundry_price');
         $products->stock_status = $request->input('stock_status');
         $products->featured = $request->input('featured');
         $products->category_id = $request->input('category_id');
@@ -85,6 +89,10 @@ class ProductController extends Controller
         $products->price = $request->input('price');
         $products->discount_price = $request->input('discount_price');
         $products->SKU = $request->input('SKU');
+        $products->alteration = $request->input('alteration');
+        $products->alteration_price = $request->input('alteration_price');
+        $products->laundry = $request->input('laundry');
+        $products->laundry_price = $request->input('laundry_price');
         $products->stock_status = $request->input('stock_status');
         $products->featured = $request->input('featured');
         $products->category_id = $request->input('category_id');

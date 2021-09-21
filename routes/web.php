@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SizeController;
 use App\Http\Controllers\frontend\CartController;
+use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\useraccess\findmyspecController;
 use App\Http\Controllers\HomeController;
 
@@ -19,7 +20,6 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/delivery', [HomeController::class, 'deliveryy'])->name('delivery');
 Route::get('/terms', [HomeController::class, 'terms'])->name('terms');
@@ -28,13 +28,20 @@ Route::get('/returns', [HomeController::class, 'returns'])->name('returns');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('detail/{id}', [HomeController::class, 'detail']);
 Route::get('category_detail/{slug}', [HomeController::class, 'viewcategory']);
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+// Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name('user_add_to_cart');
+// Route::post('/user_delete_cart', [CartController::class, 'deleteProduct'])->name('user_delete_cart');
 
 
 Auth::routes();
 
 // authenticated users
 Route::middleware(['auth'])->group(function () {
-    Route::post('/add-to-cart', [CartController::class, 'addProduct']);
+    Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name('user_add_to_cart');
+    Route::post('/user_delete_cart', [CartController::class, 'deleteProduct'])->name('user_delete_cart');
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('user_checkout');
+    Route::post('/place-order', [CheckoutController::class, 'placeorder']);
+
     Route::get('/findspec', [findmyspecController::class, 'addSpec']);
     Route::post('/insert-spec', [findmyspecController::class, 'insert']);
     Route::get('/myspec/{auth}', [findmyspecController::class, 'myspec']);

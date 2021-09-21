@@ -7,11 +7,6 @@
         <div class="row ">
             <div class="mx-auto col-xl-8 col-lg-8 col-md-8 col-offset-2">
                 <div class="card">
-                  @if(Session::has('message'))
-                  <div class="alert alert-success">
-                      <strong>Success</strong>{{Session::get(' message')}}
-                  </div>
-                  @endif
                   <div class="card-header card-header-primary">
                     <h4 class="card-title">Edit category</h4>
                     {{-- <p class="card-category">New employees on 15th September, 2016</p> --}}
@@ -20,6 +15,15 @@
                     <form action="{{ url('update-category/' . $category->id)}}" method="POST">
                       @csrf
                       @method('PUT')
+                      <div class="form-group">
+                        <select class="form-control" name="parent_id">
+
+                          <option value="">Select Parent Category</option>
+                          @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" value="{{$category->name}}" name="name" class="form-control" id="name">
@@ -27,6 +31,13 @@
                         <div class="form-group">
                             <label for="name">Slug</label>
                             <input type="text" value="{{$category->slug}}" name="slug" class="form-control" id="slug">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Featured</label>
+                            <select class="form-control" name="featured" id="">
+                                <option value="0">false</option>
+                                <option value="1">true</option>
+                            </select>
                         </div>
 
                         <div class="form-group">

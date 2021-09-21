@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Category;
 
 class CartController extends Controller
 {
@@ -52,5 +53,27 @@ class CartController extends Controller
         //     dd("not logged in");
         //     return response()->json(['status' => "Login to continue"], 422);
         // }
+    }
+
+    public function cart()
+    {
+        $categories = Category::with('children')->whereNull('parent_id')->where('featured', 0)->get();
+        $trending = Category::with('children')->whereNull('parent_id')->where('featured', 1)->get();
+
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        return view('front.cart', compact('cartitems', 'categories', 'trending'));
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        $user = Auth::user();
+        $product = Product::find($request->product_id);
+        if (!$product) {
+            return response()->json(["error" => "Product not found"], 404);
+        }
+        $Cart = Cart::whereProductId($product->id)->whereUserId($user->id)->first();
+        $Cart->delete();
+
+        return response()->json(["message" => "Product deleted"]);
     }
 }

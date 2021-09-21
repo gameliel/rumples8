@@ -2,27 +2,7 @@
 * Importing necessary  Styles.
 **/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Poppins:200,300,400,500,600,700');
-/*----bootstrap css ----- */
-@import url('../css/bootstrap.min.css');
-/*----camera-slider---*/
-@import url('../css/camera.css');
 /*------- Mega menu ------*/
-@import url('../css/menu.css');
-/*----font awesome -------*/
-@import url('../fonts/font-awesome/css/font-awesome.min.css');
-/*----owl-carousel css----*/
-@import url('../css/owl.carousel.css');
-@import url('../css/owl.theme.css');
-/*-------- animated css ------*/
-@import url('../css/animate.css');
-/*--------- flat-icon ---------*/
-@import url('../fonts/icon/font/flaticon.css');
-/*----------- Fancybox css -------*/
-@import url('../css/jquery.fancybox.min.css');
-/*------------- Map -------------*/
-@import url('../css/snazzy-info-window.min.css');
-/*----Language Switcher---*/
-@import url('../css/polyglot-language-switcher.css');
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0px;
@@ -611,12 +591,7 @@ border-style: solid;
 border-radius:14px;
 border-color: red;
 } */
-.prodimage{
-width: 63%;
-border-radius: 10px;
-margin-left: 50.6px;
-margin-top: 11px;
-}
+.prodimage{width: 40%;border-radius: 10px;margin-left: 50.6px;margin-top: 11px;}
 .prod-detail-card{width: 100%;height: 164px;border-width: 1px;border-style: hidden;border-radius:14px;}
 /* .prod-detail-card:hover{
 width: 100%;
@@ -646,8 +621,8 @@ color: red;
 .cart-display{
 display:inline-block;
 }
-.cart-prod-title{font-size: 13px;font-weight:500;text-transform: uppercase;}
-.cart-prod-price{margin-left: 21px;color:hsl(32deg 47% 71%);font-weight: 500;font-size: 13px;}
+.cart-prod-title{font-size: 17px;font-weight:500;text-transform: uppercase;}
+.cart-prod-price{margin-left: 21px;color:hsl(32deg 47% 71%);font-weight: 500;font-size: 17px;}
 .additional-prod{
 display: inline-block
 }

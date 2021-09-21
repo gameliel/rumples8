@@ -103,7 +103,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
-            }).then(res => res.json()).then((item) => console.log(item.message));
+            }).then(res => res.json()).then((item) => alert(item.message));
         })
 
     </script>

@@ -1,14 +1,14 @@
 
 /* CSS Document */
 
-/* 
+/*
     Created on   : 07/06/2018.
     Theme Name   : Conis.
     Description  : Conis - Business And Finance HTML Template
     Version      : 1.0.
     Author       : @CreativeGigs.
     Developed by : Jubayer al hasan. (jubayer.hasan1991@gmail.com)
-   
+
 */
 
 /* ------------------------------------------ */
@@ -48,27 +48,10 @@
 /*----bootstrap css ----- */
 @import url('../css/bootstrap.min.css');
 /*----camera-slider---*/
-@import url('../css/camera.css');
-/*------- Mega menu ------*/
 @import url('../css/menu.css');
-/*----font awesome -------*/
-@import url('../fonts/font-awesome/css/font-awesome.min.css');
-/*----owl-carousel css----*/
-@import url('../css/owl.carousel.css');
-@import url('../css/owl.theme.css');
-/*-------- animated css ------*/
-@import url('../css/animate.css');
-/*--------- flat-icon ---------*/
-@import url('../fonts/icon/font/flaticon.css');
-/*----------- Fancybox css -------*/
-@import url('../css/jquery.fancybox.min.css');
-/*------------- Map -------------*/
-@import url('../css/snazzy-info-window.min.css');
-/*----Language Switcher---*/
-@import url('../css/polyglot-language-switcher.css');
 
 
-/*** 
+/***
 
 ====================================================================
   Loading Transition
@@ -1051,11 +1034,11 @@ body .theme-button {
 }
 .our-portfolio .single-item .image-box .link:hover {color: #fff;}
 .our-portfolio .single-item:hover .image-box .link {-webkit-transform:translate(0,0);transform:translate(0,0);}
-.our-portfolio .single-item:hover .image-box .img { 
-  -webkit-filter: blur(5px); 
-  -moz-filter: blur(5px); 
-  -ms-filter: blur(5px); 
-  -o-filter: blur(5px); 
+.our-portfolio .single-item:hover .image-box .img {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  -o-filter: blur(5px);
   filter: blur(5px);
 }
 .our-portfolio .single-item .text {
