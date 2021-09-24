@@ -38,6 +38,7 @@
                   <!-- product description -->
                   <p>{{ $product->short_description }}</p>
                     <input type="hidden" value="{{ $product->id }}" class="prod_id">
+                    <input type="hidden" value="1" class="quantity">
                     <button class="btn btn-primary btn-md my-0 p addToCartBtn" data-product-id="{{$product->id}}">
                       <i class="fas fa-dolly pro_cart-btn"></i>
                       add to cart
@@ -91,10 +92,13 @@
         addToCartBtn.addEventListener("click", function(e){
             e.preventDefault();
             let productId = addToCartBtn.getAttribute("data-product-id")
+            let productQty = $(this).closest('.product_data').find('.quantity').val();
             let url = "{{route('user_add_to_cart')}}"
             let token =  document.head.querySelector('meta[name="csrf-token"]');
+
             let data = {
                 "product_id": productId,
+                "product_quantity": productQty,
                 "_token":token.content
             };
             fetch(url, {
@@ -104,7 +108,7 @@
                 },
                 body: JSON.stringify(data)
             }).then(res => res.json()).then((item) => alert(item.message));
-        })
+        });
 
     </script>
 @endpush

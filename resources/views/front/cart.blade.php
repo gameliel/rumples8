@@ -5,8 +5,8 @@
 <div class="container">
     <div class="cart-detail">
         <div class="row ">
+            @if($cartitems->count() > 0)
             <div class="col-md-9 col-sm-12" >
-                @if($cartitems)
                 @foreach ($cartitems as $cart)
                 <div class="row">
                     <div class="col-md-4 col-sm-12 prodimagegrid">
@@ -77,7 +77,7 @@
                             <div class="item_text_notfound">
                                 <h3>You don't have any item in your cart</h3>
                             <p>Explore our resources and mark the ones you like the most so you don’t lose sight of them.</p>
-                                <input type="submit" class="btn btn-primary btn-block" value="Look for item">
+                                <a href="{{ url('/')}}" class="btn btn-primary btn-block" > Look for item</a>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">

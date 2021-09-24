@@ -1,13 +1,13 @@
 /* Responsive CSS Document */
 
-/* 
+/*
     Created on   : 07/06/2018.
     Theme Name   : Conis.
     Description  : Conis - Business And Finance HTML Template
     Version      : 1.0.
     Author       : @CreativeGigs.
     Developed by : Jubayer al hasan. (jubayer.hasan1991@gmail.com)
-   
+
 */
 
 @media (min-width: 992px) {
@@ -75,7 +75,7 @@
   .consultation-form .form-wrapper {padding: 50px 0 0 0;}
   .latest-update .theme-title h2 {margin-bottom: 0;}
   .latest-update .theme-title {margin-bottom: 40px;}
-} 
+}
 /*(max-width: 991px)*/
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -116,7 +116,7 @@
   .blog-details .mark-text {padding-left: 30px;}
   .blog-details .share-option {margin-bottom: 75px;}
   #theme-main-banner .camera_caption h1 br,#theme-main-banner .camera_caption p br,
-  .theme-main-header .top-header .right-widget>li.quote a,.theme-main-header .top-header .right-widget>li a i {display: none;}
+  .theme-main-header .top-header .right-widget>li.quote a,.theme-main-header .top-header .right-widget>li a i {display: ;}
   .theme-main-header .top-header .right-widget>li a {padding: 0 25px;}
   .our-service-two .single-service {padding-left: 15px;}
   .testimonial-section {margin-top: 40px;}
@@ -172,7 +172,7 @@
   .testimonial-section,.consultation-form {padding: 60px 0 70px 0;}
   .testimonial-section .theme-title {padding-bottom: 60px;}
   .consultation-form .form-wrapper textarea {height: 200px;}
-  .theme-main-header .top-header .right-widget>li {line-height: 35px;}
+  .theme-main-header .top-header .right-widget>li {line-height: 35px;margin-left: -13px;}
   .theme-main-header .top-header {padding-bottom: 10px;}
 }
 /*(max-width: 575px)*/
@@ -185,7 +185,7 @@
         left: 7%;
         padding: 30px 10px;
     }
-    
+
 }
 @media (max-width: 500px) {
   .our-team .single-team-member .text-wrapper {width: 100%;padding: 25px 0 0 0;}

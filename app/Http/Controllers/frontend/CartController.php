@@ -16,6 +16,7 @@ class CartController extends Controller
         // Correction
         $user = Auth::user();
         $product = Product::find($request->product_id);
+
         if (!$product) {
             return response()->json(["error" => "Product not found"], 404);
         }
@@ -25,16 +26,14 @@ class CartController extends Controller
         }
         $cart = Cart::create([
             "user_id" => $user->id,
-            "product_id" => $product->id
+            "product_id" => $product->id,
         ]);
         return response()->json(["message" => "Product added to cart successfully"], 200);
 
         // I DON'T KNOW WHAT YOUR DOING HERE OOOO.... IB
         // $product_id = $request->input('product_id');
         // $prod_check = Product::where('id', '$product_id')->exists();
-        // dd($prod_check);
         // if (Auth::check()) {
-        //     dd($prod_check);
         //     if ($prod_check) {
         //         if (Cart::where('prod_id', $product_id)->where('user_id', Auth::id())->exists()) {
         //             return "already added";
@@ -75,5 +74,12 @@ class CartController extends Controller
         $Cart->delete();
 
         return response()->json(["message" => "Product deleted"]);
+    }
+
+    public function cartcount()
+    {
+        $cartcount = Cart::where('user_id', Auth::id())->count();
+
+        return response()->sjon(['count'=>$cartcount]);
     }
 }

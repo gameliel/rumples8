@@ -1427,8 +1427,25 @@
                     Mobile screen
 =========================================================== */
 @media screen and (min-width: 360px) and (max-width: 441px){
+        .main .close {
+        width: 50px;
+        height: 50px;
+        border-color: #3c190d;
+        border: 2px solid;
+        border-radius: 100px;
+        padding-top: 9px;
+        padding-left: 15px;
+        overflow: auto;
+        margin-left: 18rem;
+        z-index: 1;
+        position: absolute;
+        color: #ff8001;
+    }
+    .large-search{
+      display: none;
+    }
     .main-menu-wrapper .large-search{
-        display: none;
+        display: none !important;
     }
     nav .navbar-collapse  ul > li > ul{
         position: inherit !important;
@@ -1455,8 +1472,8 @@
      }
 
     footer .btn {
-        margin-left: -5.7rem;
-        margin-top: -59px;
+        margin-left: 254px;
+        margin-top: -33px !important;
         font-size: 12px;
     }
     footer form input {
@@ -1662,7 +1679,7 @@
         background-clip: padding-box;
         border: 1px solid rgba(0, 0, 0, 0.15);
         border-radius: 0.25rem;
-        margin-left: -36px !important;
+        margin-left: 65px !important;
     }
      .dropdown_spec .personal_details .p_details {
        border-radius: 0rem !important;
@@ -1834,12 +1851,14 @@
     }
     .content form input{
         font-size: 9px;
+        margin-top: -44px;
     }
     .content form input::placeholder{
         font-size: 8px;
     }
     .content form .btn{
         font-size: 9px;
+        margin-top: -40px !important;
     }
     .respect{
         margin-top: -14px;
@@ -1950,6 +1969,14 @@
     nav input{
         margin-bottom: 15px;
     }
+
+    background: rgb(60, 25, 13);
+    position: absolute;
+    transform: translate3d(12px, 47px, 0px);
+    top: 0px;
+    left: 100px;
+    will-change: transform;
+  }
 }
 /* ========================================================
                    End of mobile screen

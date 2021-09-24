@@ -9,6 +9,8 @@ use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\frontend\CheckoutController;
 use App\Http\Controllers\useraccess\findmyspecController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\useraccess\UserController;
+use App\Http\Controllers\payment\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,19 +31,29 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('detail/{id}', [HomeController::class, 'detail']);
 Route::get('category_detail/{slug}', [HomeController::class, 'viewcategory']);
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name('user_add_to_cart');
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+
+
 // Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name('user_add_to_cart');
 // Route::post('/user_delete_cart', [CartController::class, 'deleteProduct'])->name('user_delete_cart');
 
 
 Auth::routes();
 
+Route::get('/load-cart-data', [CartController::class, 'cartcount']);
 // authenticated users
 Route::middleware(['auth'])->group(function () {
-    Route::post('/add-to-cart', [CartController::class, 'addProduct'])->name('user_add_to_cart');
+    Route::get('/cart', [CartController::class, 'cart'])->name('cart');
     Route::post('/user_delete_cart', [CartController::class, 'deleteProduct'])->name('user_delete_cart');
     Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('user_checkout');
     Route::post('/place-order', [CheckoutController::class, 'placeorder']);
+    Route::post('proceed-to-pay', [CheckoutController::class, 'paystackcheck'])->name('proceed-to-pay');
 
+    //user order
+    Route::get('/myorder', [UserController::class, 'index']);
+    Route::get('/view-order/{id}', [UserController::class, 'view']);
     Route::get('/findspec', [findmyspecController::class, 'addSpec']);
     Route::post('/insert-spec', [findmyspecController::class, 'insert']);
     Route::get('/myspec/{auth}', [findmyspecController::class, 'myspec']);

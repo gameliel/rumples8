@@ -33,47 +33,57 @@
                         <div class="row checkout-form">
                             <div class="col-md-6">
                                 <label for="name">First name</label>
-                                <input type="text" class="form-control" name="fname">
+                                <input type="text" class="form-control firstname" name="fname">
+                                <span id="fname_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Last name</label>
-                                <input type="text" class="form-control" name="lname">
+                                <input type="text" class="form-control lastname" name="lname">
+                                <span id="lname_error" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="name">Email</label>
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control email" name="email">
+                                <span id="email_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Phone number</label>
-                                <input type="number" class="form-control" name="phone">
+                                <input type="number" class="form-control phone" name="phone">
+                                <span id="phone_error" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="name">Address 1</label>
-                                <input type="text" class="form-control" name="address">
+                                <input type="text" class="form-control address" name="address">
+                                <span id="address_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Address 2</label>
-                                <input type="text" class="form-control" name="address2">
+                                <input type="text" class="form-control address2" name="address2">
+                                <span id="address2_error" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="name">City</label>
-                                <input type="text" class="form-control" name="city">
+                                <input type="text" class="form-control city" name="city">
+                                <span id="city_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">State</label>
-                                <input type="text" class="form-control" name="state">
+                                <input type="text" class="form-control state" name="state">
+                                <span id="state_error" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="name">country</label>
-                                <input type="text" class="form-control" name="country">
+                                <input type="text" class="form-control country" name="country">
+                                <span id="country_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Postcode</label>
-                                <input type="text" class="form-control" name="postcode">
+                                <input type="text" class="form-control postcode" name="postcode">
+                                <span id="postcode_error" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -92,12 +102,14 @@
                             </tbody>
                             @endforeach
                         </table>
-                        <button type="submit" class="btn btn-success btn-lg w-100 float-end"><i class="far fa-money-bill-alt"></i>  Place order</button>
+                        <button type="submit" class="btn btn-success btn-lg w-100 float-end"><i class="far fa-money-bill-alt"></i>  Place order | COD</button>
+                        <button type="submit" class="btn btn-unique btn-lg w-100 mt-3 paystack-btn">Pay with paystack</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+   {{-- i just remove the paystac form just help me out thank u --}}
 </div>
 
 @endsection

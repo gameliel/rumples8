@@ -29,6 +29,8 @@
     <!-- CustomJs -->
     <script type="text/javascript" src="{{ asset ('/js/custom.js' ) }}"></script>
     <script type="text/javascript" src="{{ asset ('/js/cart.js' ) }}"></script>
+    <script type="text/javascript" src="{{ asset ('assets/js/checkout.js' ) }}"></script>
+
     <style>
         .cart-circle{
             width: 50px;
@@ -55,6 +57,9 @@
             margin-left: 38px;
             color: #ffffff;
             font-size: 12px;
+        }
+        .dropdown-item:hover{
+            background: transparent;
         }
     </style>
     @yield('style')
@@ -108,8 +113,10 @@
                                       {{ Auth::user()->name }}
                                   </a>
 
-                                  <div class="dropdown-menu dropdown-menu-right" style="margin-top: 27px;" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                  <div class="dropdown-menu" style="background: #3c190d;">
+                                    <a href="{{ url('myorder')}}" class="dropdown-item">My order</a>
+
+                                      <a class="dropdown-item rest" href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
                                           {{ __('Logout') }}
@@ -135,13 +142,14 @@
                     <div class="logo float-left"><a href="{{ route('home')}}"><img src="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}" alt="Logo" width="200" height="65"></a></div>
 
                     <div class="large-search right-widget float-right" style="margin-top: 29px; display: inline-flex;">
-                        <div class="cart-circle">
+                        {{-- <div class="cart-circle">
                             <a href="{{ route('cart') }}">
                             <img src="{{ asset('assets/img/SVG/cart.svg')}}" alt="">
                             </a>
                             <div class="cart-count"></div>
                             <p>0</p>
-                        </div>
+                        </div> --}}
+                        <a href="{{ url('cart')}}" class="btn btn-unique btn-rounded btn-sm">view cart</a>
                       <form class="form-inline md-form mr-auto">
                           {{-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> --}}
                           <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
@@ -272,5 +280,20 @@
 <script src="{{ asset('js/main.js')}}"></script>
 @yield('scripts') <!-- change this to -->
 @stack("script")
+<script>
+    function loadcart()
+    {
+        $.ajax({
+        method: "GET",
+        url: "/load-cart-data",
+        success: function (response) {
+            $('.cart-count').html('');
+            $('.cart-count').val(response.count);
+            // console.log(response.count);
+        }
+    });
+    }
+</script>
+
 </body>
 </html>

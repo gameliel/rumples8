@@ -10,6 +10,7 @@ use App\Models\Brand;
 use App\Models\Size;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
+use illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -39,6 +40,7 @@ class ProductController extends Controller
             $file->move('assets/uploads/products',$filename);
             $products->image = $filename;
         }
+        $products->user_id = Auth::id();
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
         $products->short_description = $request->input('short_description');

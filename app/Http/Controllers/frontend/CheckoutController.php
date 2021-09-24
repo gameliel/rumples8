@@ -53,6 +53,14 @@ class CheckoutController extends Controller
         $order->city = $request->input('city');
         $order->state = $request->input('state');
         $order->country = $request->input('country');
+
+        $total = 0;
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach($cartitems_total as $item)
+        {
+            $total += $item->products->price;
+        }
+
         $order->total_price = $total;
         $order->postcode = $request->input('postcode');
         $order->tracking_no = 'rumples'.rand(1111,9999);
@@ -88,7 +96,45 @@ class CheckoutController extends Controller
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
 
+        $products = Product::where('user_id', Auth::id())->get();
+        Product::destroy($products);
+
         return redirect('/')->with('status', 'Order placed successfully');
 
+    }
+
+    public function paystackcheck(Request $request)
+    {
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        $total_price = 0;
+
+        foreach($cartitems as $item)
+        {
+            $total_price += $item->products->price;
+        }
+        $firstname = $request->input('firstname ');
+        $lastname = $request->input('lastname ');
+        $email = $request->input('email ');
+        $phone = $request->input('phone ');
+        $address = $request->input('address ');
+        $address2 = $request->input('address2 ');
+        $city = $request->input('city ');
+        $state = $request->input('state ');
+        $country = $request->input('country ');
+        $postcode =   $request->input('postcode ');
+
+        return response()->json([
+            'firstname'=> $firstname,
+            'lastname'=> $lastname,
+            'email'=> $email,
+            'phone'=> $phone,
+            'address'=> $address,
+            'address2'=> $address2,
+            'city'=> $city,
+            'state'=> $state,
+            'country'=> $country,
+            'postcode'=> $postcode,
+            'total_price'=>  $total_price
+        ]);
     }
 }

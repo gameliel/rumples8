@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Orderitems;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,4 +29,9 @@ class Order extends Model
         'total_price',
         'tracking_no',
     ];
+
+    public function orderitems()
+    {
+        return $this->hasMany(Orderitems::class);
+    }
 }

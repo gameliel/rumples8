@@ -54,9 +54,16 @@
             color: #ffffff;
             font-size: 12px;
         }
+        .dropdown-item:hover{
+            background: transparent;
+        }
+        .navbar-light .navbar-toggler-icon {
+            background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E) !important;
+            display: block;
+        }
     </style>
-    {{-- <script type="text/javascript" src="{{ asset ('custom.js' ) }}"></script> --}}
     @yield('style')
+    @stack("style")
 </head>
 <body>
     <!-- firt section orange -->
@@ -95,7 +102,6 @@
                         <div class="float-right">
                             <ul class="right-widget clearfix">
                                 <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> contact@rumples.co</a></li>
-                                <!--<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> </a></li>-->
                                 @guest
                                     @if(Route::has('login'))
                                         <li class="quote"><a href="{{ route('login')}}">Login</a></li>
@@ -106,8 +112,10 @@
                                       {{ Auth::user()->name }}
                                   </a>
 
-                                  <div class="dropdown-menu dropdown-menu-right" style="margin-top: 27px;" aria-labelledby="navbarDropdown">
-                                      <a class="dropdown-item" href="{{ route('logout') }}"
+                                  <div class="dropdown-menu" style="background: #3c190d;">
+                                    <a href="{{ url('myorder')}}" class="dropdown-item" >My order</a>
+
+                                      <a class="dropdown-item " href="{{ route('logout') }}"
                                          onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
                                           {{ __('Logout') }}
@@ -127,19 +135,21 @@
 
 
 
+
             <div class="main-menu-wrapper clearfix">
                 <div class="container clearfix">
                     <!-- Logo -->
                     <div class="logo float-left"><a href="{{ route('home')}}"><img src="{{ asset('assets/img/SVG/Asset 1RUMPLES.svg') }}" alt="Logo" width="200" height="65"></a></div>
 
                     <div class="large-search right-widget float-right" style="margin-top: 29px; display: inline-flex;">
-                        <div class="cart-circle">
+                        {{-- <div class="cart-circle">
                             <a href="{{ route('cart') }}">
                             <img src="{{ asset('assets/img/SVG/cart.svg')}}" alt="">
                             </a>
                             <div class="cart-count"></div>
                             <p>0</p>
-                        </div>
+                        </div> --}}
+                        <a href="{{ url('cart')}}" class="btn btn-unique btn-rounded btn-sm float-right">view cart</a>
                       <form class="form-inline md-form mr-auto">
                           {{-- <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> --}}
                           <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
@@ -154,12 +164,14 @@
                             <i class="navbar-toggler-icon"></i>
                         </button>
 
+
                         <div class="collapse navbar-collapse clearfix" id="navbarNav">
                           <div class="mobile-search  right-widget float-right" style="margin-top: 29px;">
                             <form class="form-inline md-form mr-auto">
                                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
                               </form>
+                              <a href="{{ url('cart')}}" class="btn btn-unique btn-rounded btn-sm float-right">view cart</a>
                            </div> <!-- /.right-widget -->
                           <ul class="navbar-nav nav " style="margin-top: -19px;">
                             <li class="nav-item dot-fix"><a class="nav-link" href="{{ route('home')}}">Home</a></li>
@@ -267,10 +279,23 @@
 <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-{{-- <script>
-  swal("Welcome to rumplesandco.")
-</script> --}}
+<script>
+  swal("Welcome to rumplesandco. Please signup to shop now")
+</script>
 @stack("script")
+
+<script>
+    function loadcart()
+    {
+        $.ajax({
+        method: "GET",
+        url: "/load-cart-data",
+        success: function (response) {
+            console.log(response.count);
+        }
+    });
+    }
+</script>
 
 </body>
 </html>
