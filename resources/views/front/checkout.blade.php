@@ -22,7 +22,7 @@
 
 @section('content')
 <div class="container bottom-pad mt-5">
-    <form action="{{ url('place-order') }}" method="POST">
+    <form action="{{ url('place-order') }}" method="POST" id="paymentForm">
         @csrf
         <div class="row">
             <div class="col-xl-7 col-lg-7 col-md-7">
@@ -33,18 +33,18 @@
                         <div class="row checkout-form">
                             <div class="col-md-6">
                                 <label for="name">First name</label>
-                                <input type="text" class="form-control firstname" name="fname">
+                                <input type="text" class="form-control firstname" id="first-name" name="fname">
                                 <span id="fname_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Last name</label>
-                                <input type="text" class="form-control lastname" name="lname">
+                                <input type="text" class="form-control lastname" id="last-name" name="lname">
                                 <span id="lname_error" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="name">Email</label>
-                                <input type="email" class="form-control email" name="email">
+                                <input type="text" class="form-control email" id="email" name="email">
                                 <span id="email_error" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
@@ -90,6 +90,7 @@
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-md-5">
+                @php $total = 0;@endphp
                 <div class="card1">
                     <div class="card-body">
                         <h4>Order Details</h4>
@@ -100,16 +101,46 @@
                                 <td>{{ $item->products->name}}</td>
                                 <td>{{ $item->products->price}}</td>
                             </tbody>
+                            @php $total += $item->products->price; @endphp
                             @endforeach
+                            <input type="hidden" id="amount" value="<?php echo $total; ?>">
                         </table>
-                        <button type="submit" class="btn btn-success btn-lg w-100 float-end"><i class="far fa-money-bill-alt"></i>  Place order | COD</button>
-                        <button type="submit" class="btn btn-unique btn-lg w-100 mt-3 paystack-btn">Pay with paystack</button>
+                        <p class="total_price">Total Price: {{ $total }}</p>
+                        <input type="hidden" value="{{ $total }}" id="amount">
+                        {{-- <button type="submit" class="btn btn-success btn-lg w-100 float-end"><i class="far fa-money-bill-alt"></i>  Place order | COD</button> --}}
+                        <button type="submit" class="btn btn-unique btn-lg w-100 mt-3 paystack-btn" onclick="payWithPaystack(event)">Pay</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-   {{-- i just remove the paystac form just help me out thank u --}}
+    <script>
+        var paymentForm = document.getElementById('paymentForm');
+            paymentForm.addEventListener('submit', payWithPaystack, false);
+            function payWithPaystack(e) {
+                e.preventDefault();
+                var handler = PaystackPop.setup({
+                    key: 'pk_live_d7649c28db3fb576f5a2d174942b8d90cfdaf899', // Replace with your public key
+                    email: document.getElementById('email').value,
+                    amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+                    currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+                    ref: ''+Math.floor((Math.random() + 1000000000) + 1), // Replace with a reference you generated
+                    callback: function(response) {
+                    //this happens after the payment is completed successfully
+                    var reference = response.reference;
+                    alert('Payment complete! Reference: ' + reference);
+                    // Make an AJAX call to your server with the reference to verify the transaction
+                    },
+                    onClose: function() {
+                    alert('Transaction was not completed, window closed.');
+                    },
+            });
+            handler.openIframe();
+        }
+    </script>
 </div>
 
 @endsection
+@push('script')
+<script src="https://js.paystack.co/v1/inline.js"></script>
+@endpush

@@ -7,9 +7,9 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0px;
 }
-.navbar-dark .navbar-toggler {
-    color: transparent !important;
-    border-color: transparent !important;
+.navbar-expand-lg .navbar-toggler .navbar-toggler-icon {
+    background-image: url(/assets/img/menu.png);
+    padding-top: 81px;
 }
 .banner-image{
   background: url(../img/banner/1.gif);

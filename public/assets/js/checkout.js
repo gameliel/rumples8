@@ -173,7 +173,8 @@ $(document).ready(function () {
                 url: "/proceed-to-pay ",
                 data: data,
                 success: function (response) {
-                    alert(response.fname);
+                    // alert(response.total_price);
+
                 }
             });
         }
