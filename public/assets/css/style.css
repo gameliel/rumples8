@@ -494,6 +494,7 @@ footer form input{
   max-width: 400px;
   margin: auto;
   overflow: hidden;
+  margin-top: 39px;
 }
 .content .content-overlay {
   background: rgba(0,0,0,0.7);

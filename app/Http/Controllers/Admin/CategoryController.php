@@ -23,6 +23,14 @@ class CategoryController extends Controller
     public function insert(Request $request)
     {
         $category = new Category();
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/category',$filename);
+            $category->image = $filename;
+        }
         $category->parent_id = $request->input('parent_id');
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');
@@ -42,6 +50,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/category',$filename);
+            $category->image = $filename;
+        }
         $category->parent_id = $request->input('parent_id');
         $category->name = $request->input('name');
         $category->slug = $request->input('slug');

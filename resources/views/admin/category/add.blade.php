@@ -17,7 +17,7 @@
                     {{-- <p class="card-category">New employees on 15th September, 2016</p> --}}
                   </div>
                   <div class="card-body table-responsive">
-                    <form action="{{ url('insert-category')}}" method="POST">
+                    <form action="{{ url('insert-category')}}" method="POST" enctype="multipart/form-data">
                       @csrf
                       <div class="form-group">
                         <select class="form-control" name="parent_id">
@@ -44,9 +44,12 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" name='image' class="form-control" id="inputGroupFile02">
+                        </div>
+                        <div class="form-group">
                             <input type="submit" value="add" name="submit" class="btn btn-secondary" id="slug">
                         </div>
-
                     </form>
                   </div>
                 </div>

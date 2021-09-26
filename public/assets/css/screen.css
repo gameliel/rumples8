@@ -1427,6 +1427,14 @@
                     Mobile screen
 =========================================================== */
 @media screen and (min-width: 360px) and (max-width: 441px){
+        .navbarhead > h5 {
+            font-style: proxima nova;
+            font-weight: bold;
+            color: orange;
+            text-transform: uppercase;
+            margin-left: 28px;
+            margin-bottom: -1px;
+        }
         .main .close {
         width: 50px;
         height: 50px;
@@ -1812,7 +1820,7 @@
     }
     .news-background{
         width: 80%;
-        height: 140px;
+        height: 190px;
         opacity: 90%;
         background-color: #e1992d;
         padding-top: 7.2px;
@@ -1828,7 +1836,7 @@
     .content form{
         width: 50%;
         margin-left: 1.5rem;
-        margin-top: -10px;
+        margin-top: 44px !important;
     }
     .content .btn-secondary{
         background-color: green;
@@ -1858,7 +1866,8 @@
     }
     .content form .btn{
         font-size: 9px;
-        margin-top: -40px !important;
+        margin-top: -43px !important;
+        margin-left: 131px;
     }
     .respect{
         margin-top: -14px;

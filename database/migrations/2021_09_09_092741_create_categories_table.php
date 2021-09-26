@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->boolean('featured')->default(false);
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

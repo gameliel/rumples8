@@ -31,28 +31,25 @@
     <h1 style="color: #ffffff">TRENDING PICK</h1>
   </div>
   <div class="row first-row">
-    @foreach ($products as $product)
-      <div id="product" class="col-lg-3 col-md-3 col-xm-3 col-sm-12 " style="margin-bottom: 23px;">
-        <div class="content">
-          <div class="brp">
-            <div class="content-overlay"></div>
-          <div class="pimg">
-            <img src="{{ asset('assets/uploads/products/' .$product->image)}}" class="d-block w-100" height="200px;" alt="image here">
+    @foreach ($categories as $product)
+          <div id="product" class="col-lg-3 col-md-3 col-xm-3 col-sm-6 col-xm-6 " style="margin-bottom: 23px;">
+            <div class="content">
+              <div class="brp">
+                <div class="content-overlay"></div>
+              <div class="pimg">
+                <img src="{{ asset('assets/uploads/category/' .$product->image)}}" class="d-block w-100" alt="image here">
+              </div>
+              <div class="text-center">
+              <p class="title">{{$product->name}}</p>
+              </div>
+              </div>
+              <div class="align-content-center content-details fadeIn-bottom">
+                {{-- <a href="#"><img class="order-3 p-2" src="{{ asset('assets/img/SVG/view.svg') }}" style="width: auto%; margin-left: 56px;" alt=""></a>
+                <a href="#"><img class="order-2 p-2" src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style=" margin-left: 140px; margin-top: -74px;" alt=""></a> --}}
+                <a href="{{ url('category_detail/'.$product->slug) }}"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
+              </div>
+            </div>
           </div>
-          <div class="text-center">
-          <p class="title">{{$product->name}}</p>
-            <p class="price">{{$product->price}}</p>
-            <del class="price"><p>{{$product->discount_price}}</p> </del>
-          </div>
-          </div>
-          <div class="align-content-center content-details fadeIn-bottom">
-            {{-- <a href="#"><img class="order-3 p-2" src="{{ asset('assets/img/SVG/view.svg') }}" style="width: auto%; margin-left: 56px;" alt=""></a>
-            <a href="#"><img class="order-2 p-2" src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style=" margin-left: 140px; margin-top: -74px;" alt=""></a> --}}
-            <a href="{{ url('detail/'.$product->id)}}"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
-            <a href="{{ route('cart')}}" class="addToCartBtn" data-product-id="{{$product->id}}" ><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
-          </div>
-        </div>
-      </div>
       @endforeach
   </div>
   <div class="text-center load-more">
@@ -78,13 +75,13 @@ Your browser does not support HTML5 video.
 <div class="news-background">
 <div class="content text-center container">
 <h4>Be the first to get notified</h4>
-<p>Let's have your WhatsApp Number to notify you when a new bale opens</p>
+<small style="font-size: 11px; margin-top:-2px;">Let's have your WhatsApp Number to notify you when a new bale opens</small>
 <form class="form-inline md-form mr-auto" style="margin-top: 29px;">
   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
   <button class="btn btn-unique btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button>
 </form>
-<p class="respect">We respect your privacy and anxiousness, so we never share your info
-  or send spams.</p>
+<small style="font-size: 11px; margin-top:-2px;" class="respect">We respect your privacy and anxiousness, so we never share your info
+  or send spams.</small>
 </div>
 </div>
 </div>

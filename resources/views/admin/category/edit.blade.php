@@ -12,7 +12,7 @@
                     {{-- <p class="card-category">New employees on 15th September, 2016</p> --}}
                   </div>
                   <div class="card-body table-responsive">
-                    <form action="{{ url('update-category/' . $category->id)}}" method="POST">
+                    <form action="{{ url('update-category/' . $category->id)}}" method="POST" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
                       <div class="form-group">
@@ -39,11 +39,13 @@
                                 <option value="1">true</option>
                             </select>
                         </div>
-
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" name='image' class="form-control" id="inputGroupFile02">
+                        </div>
                         <div class="form-group">
                             <input type="submit" value="update" name="submit" class="btn btn-secondary" id="slug">
                         </div>
-
                     </form>
                   </div>
                 </div>
