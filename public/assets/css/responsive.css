@@ -43,7 +43,7 @@
   .theme-title a {position: static;margin-top: 25px;}
   .main-menu-wrapper .logo,.main-menu-wrapper .right-widget {position: relative; z-index: 99;}
   .main-menu-wrapper nav .right-widget  {margin-right:70px;}
-  #mega-menu-wrapper {position: absolute;left:15px;right:15px;top:0;z-index: 9;}
+  #mega-menu-wrapper {position: absolute;left:15px;right:15px;top:0;z-index: 9;margin-top: 12px;}
   .main-menu-wrapper .right-widget>ul>li {line-height: 60px;}
   .main-menu-wrapper .logo {margin-top: 11px;}
   .main-menu-wrapper .right-widget .cart-icon a span {top:26px;}
@@ -172,7 +172,9 @@
   .testimonial-section,.consultation-form {padding: 60px 0 70px 0;}
   .testimonial-section .theme-title {padding-bottom: 60px;}
   .consultation-form .form-wrapper textarea {height: 200px;}
-  .theme-main-header .top-header .right-widget>li {line-height: 35px;margin-left: -13px;}
+  .theme-main-header .top-header .right-widget>li {line-height: 35px;margin-left: -13px;
+      margin-top: 2px;
+  }
   .theme-main-header .top-header {padding-bottom: 10px;}
 }
 /*(max-width: 575px)*/

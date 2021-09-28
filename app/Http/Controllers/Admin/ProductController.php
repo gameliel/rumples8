@@ -40,6 +40,37 @@ class ProductController extends Controller
             $file->move('assets/uploads/products',$filename);
             $products->image = $filename;
         }
+
+        // image 1
+        if($request->hasFile('image1'));
+        {
+            $file = $request->file('image1');
+            $ext = $file->getClientOriginalExtension();
+            $filename1 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename1);
+            $products->image1 = $filename1;
+        }
+
+        // image 2
+        if($request->hasFile('image2'));
+        {
+            $file = $request->file('image2');
+            $ext = $file->getClientOriginalExtension();
+            $filename2 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename2);
+            $products->image2 = $filename2;
+        }
+
+        // image 3
+        if($request->hasFile('image3'));
+        {
+            $file = $request->file('image3');
+            $ext = $file->getClientOriginalExtension();
+            $filename3 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename3);
+            $products->image3 = $filename3;
+        }
+
         $products->user_id = Auth::id();
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
@@ -84,6 +115,35 @@ class ProductController extends Controller
             $file->move('assets/uploads/products',$filename);
             $products->image = $filename;
         }
+
+        if($request->hasFile('image1'))
+        {
+            $file = $request->file('image1');
+            $ext = $file->getClientOriginalExtension();
+            $filename1 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename1);
+            $products->image1 = $filename1;
+        }
+
+        if($request->hasFile('image2'))
+        {
+            $file = $request->file('image2');
+            $ext = $file->getClientOriginalExtension();
+            $filename2 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename2);
+            $products->image1 = $filename2;
+        }
+
+        if($request->hasFile('image3'))
+        {
+            $file = $request->file('image3');
+            $ext = $file->getClientOriginalExtension();
+            $filename3 = time().'.'.$ext;
+            $file->move('assets/uploads/products',$filename3);
+            $products->image1 = $filename3;
+        }
+
+
         $products->name = $request->input('name');
         $products->slug = $request->input('slug');
         $products->short_description = $request->input('short_description');

@@ -6,10 +6,16 @@
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="./user.html">
+      <li class="nav-item {{ Request::is('users') ? 'active':''; }}">
+        <a class="nav-link" href="{{ url('users')}}">
           <i class="material-icons">person</i>
-          <p>Authentication</p>
+          <p>Registered Users</p>
+        </a>
+      </li>
+      <li class="nav-item {{ Request::is('orders') ? 'active':''; }}">
+        <a class="nav-link" href="{{ url('orders')}}">
+          <i class="material-icons">content_paste</i>
+          <p>Orders</p>
         </a>
       </li>
       <li class="nav-item {{ Request::is('products') ? 'active':''; }}">
@@ -66,6 +72,7 @@
           <p>Posts</p>
         </a>
       </li>
+
       <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}">
           <i class="material-icons">lock</i>

@@ -31,7 +31,9 @@ class CreateProductsTable extends Migration
             $table->boolean('featured')->default(false);
             $table->unsignedInteger('quantity')->default(1);
             $table->string('image')->nullable();
-            $table->text('images')->nullable();
+            $table->text('image1')->nullable();
+            $table->text('image2')->nullable();
+            $table->text('image3')->nullable();
             $table->bigInteger('size_id')->unsigned()->nullable();
             $table->bigInteger('brand_id')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();

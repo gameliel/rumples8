@@ -101,11 +101,13 @@
                         </div>
                         <div class="float-right">
                             <ul class="right-widget clearfix">
-                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> contact@rumples.co</a></li>
+                                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> hello@rumples.co</a></li>
                                 <!--<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i> </a></li>-->
                                 @guest
                                     @if(Route::has('login'))
                                         <li class="quote"><a href="{{ route('login')}}">Login</a></li>
+                                        
+                                        <li class="quote"><a href="{{ route('register')}}">Sign up</a></li>
                                     @endif
                                 @else
                                 <li class="nav-item dropdown">
@@ -161,6 +163,10 @@
                         <button class="navbar-toggler float-right clearfix" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="navbar-toggler-icon"></i>
                         </button>
+                        <div class="mobile-search">
+                            <a href="{{ url('cart')}}" class="btn btn-unique btn-rounded btn-sm float-right">view cart</a>
+                        </div>
+
 
                         <div class="collapse navbar-collapse clearfix" id="navbarNav">
                           <div class="mobile-search  right-widget float-right" style="margin-top: 29px;">
@@ -213,7 +219,6 @@
                     </nav>
                 </div> <!-- /.container -->
             </div> <!-- /.main-menu-wrapper -->
-        </header> <!-- /.theme-main-header -->
             <!-- end of navigation -->
         </div>
     </div>

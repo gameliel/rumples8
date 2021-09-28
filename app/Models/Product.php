@@ -26,6 +26,7 @@ class Product extends Model
         'featured',
         'quantity',
         'image',
+        'images',
         'category_id',
         'size_id',
         'brand_id',

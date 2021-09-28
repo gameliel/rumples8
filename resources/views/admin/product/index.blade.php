@@ -60,7 +60,7 @@
                           <td>{{ $prod->price }}</td>
                           <td>{{ $prod->discount_price }}</td>
                           <td>{{ $prod->stock_status }}</td>
-                          <td>{{ $prod->image }}</td>
+                          <td><img src="{{ asset('assets/uploads/products/'.$prod->image)}}" height="70" width="70" alt="product image"></td>
                           <td>{{ $prod->category_id }}</td>
                           <td>{{ $prod->size_id }}</td>
                           <td>{{ $prod->brand_id }}</td>

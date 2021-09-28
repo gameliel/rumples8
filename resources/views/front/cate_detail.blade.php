@@ -22,7 +22,7 @@
                 {{-- <a href="#"><img class="order-3 p-2" src="{{ asset('assets/img/SVG/view.svg') }}" style="width: auto%; margin-left: 56px;" alt=""></a>
                 <a href="#"><img class="order-2 p-2" src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style=" margin-left: 140px; margin-top: -74px;" alt=""></a> --}}
                 <a href="{{ url('detail/'.$product->id)}}"><img src="{{ asset('assets/img/SVG/view.svg') }}" style="width: 98%;" alt=""></a>
-                <a href="#"><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
+                <a href="{{ url('cart') }}"><img src="{{ asset('assets/img/SVG/add_to_cart.svg') }}" style="width: 100%;" alt=""></a>
               </div>
             </div>
           </div>

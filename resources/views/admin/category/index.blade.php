@@ -27,6 +27,9 @@
                     <th>
                       Featured
                     </th>
+                    <th>
+                        Image
+                      </th>
                   </thead>
                   <tbody>
                     @foreach ($categories as $cate)
@@ -35,6 +38,7 @@
                         <td>{{ $cate->name }}</td>
                         <td>{{ $cate->slug }}</td>
                         <td>{{ $cate->featured }}</td>
+                        <td><td><img src="{{ asset('assets/uploads/category/'.$cate->image)}}" height="70" width="70" alt="product image"></td></td>
                         <td class="td-actions text-right">
                           <a href="{{ url('edit-cate/'.$cate->id) }}" type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
                             <i class="material-icons">edit</i>

@@ -13,7 +13,7 @@
                 <i class="material-icons">store</i>
               </div>
               <p class="card-category">Products</p>
-              <h3 class="card-title">100
+              <h3 class="card-title">0
                 <small>Items</small>
               </h3>
             </div>
@@ -32,7 +32,7 @@
                 <i class="material-icons">category</i>
               </div>
               <p class="card-category">Categories</p>
-              <h3 class="card-title">40
+              <h3 class="card-title">0
                 <small>Categories</small>
               </h3>
             </div>
@@ -50,7 +50,7 @@
                 <i class="material-icons">polymer</i>
               </div>
               <p class="card-category">Brands</p>
-              <h3 class="card-title">20 Brands</h3>
+              <h3 class="card-title">0 Brands</h3>
             </div>
             <div class="card-footer">
               <div class="stats">
@@ -66,7 +66,7 @@
                 <i class="material-icons">personoutline</i>
               </div>
               <p class="card-category">Users</p>
-              <h3 class="card-title">30
+              <h3 class="card-title">0
                 <small>Customers</small>
               </h3>
             </div>
@@ -133,7 +133,7 @@
                           <td>{{ $prod->price }}</td>
                           <td>{{ $prod->discount_price }}</td>
                           <td>{{ $prod->stock_status }}</td>
-                          <td>{{ $prod->image }}</td>
+                          <td><img src="{{ asset('assets/uploads/products/'.$prod->image)}}" height="70" width="70" alt="product image"></td>
                           <td>{{ $prod->category_id }}</td>
                           <td>{{ $prod->size_id }}</td>
                           <td>{{ $prod->brand_id }}</td>

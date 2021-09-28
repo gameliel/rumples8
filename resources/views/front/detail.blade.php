@@ -18,10 +18,13 @@
                   </div>
                   <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active text-left p-4">
-                                <img src="{{ asset('assets/uploads/products/' .$product->image)}}" class="bimg para d-block w-100" alt="test">
+                                <img src="{{ asset('assets/uploads/products/' .$product->image1)}}" class="bimg para d-block w-100" alt="test">
                         </div>
                         <div class="carousel-item text-left p-4">
-                              <img src="{{ asset('assets/uploads/products/' .$product->image)}}" class="bimg para d-block w-100" alt="test">
+                              <img src="{{ asset('assets/uploads/products/' .$product->image2)}}" class="bimg para d-block w-100" alt="test">
+                        </div>
+                        <div class="carousel-item text-left p-4">
+                            <img src="{{ asset('assets/uploads/products/' .$product->image3)}}" class="bimg para d-block w-100" alt="test">
                         </div>
                   </div>
                   </div>

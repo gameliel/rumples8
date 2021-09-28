@@ -12,6 +12,16 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel="stylesheet" href="{{ asset('css/style.css')}}">
+	<style>
+    @media screen and (min-width: 360px) and (max-width: 441px){
+        .img{
+            display: none;
+        }
+        .navbar-brand{
+            width: 70%;
+        }
+    }
+</style>
 </head>
 <body>
     <div id="app">

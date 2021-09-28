@@ -71,6 +71,7 @@
                             </div>
                         </div>
                 </form>
+                <p class="text-center">Not a member? <a href="{{ route('login') }}">Sign In</a></p>
                     </div>
                   </div>
             </div>

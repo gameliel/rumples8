@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.paystack-btn').click(function (e) {
+    $('.payWithPaystack').click(function (e) {
         e.preventDefault();
 
         var firstname = $('.firstname').val();
@@ -175,6 +175,51 @@ $(document).ready(function () {
                 success: function (response) {
                     // alert(response.total_price);
 
+                    var paymentForm = document.getElementById('paymentForm');
+                        // paymentForm.addEventListener('submit', false);
+                        // function (e) {
+                            e.preventDefault();
+                            var handler = PaystackPop.setup({
+                                key: 'pk_test_1f58ab1ee3fe3f82fb694283906171afc7e72a84', // Replace with your public key
+                                name: document.getElementById('first-name') + document.getElementById('last-name').value,
+                                email: document.getElementById('email').value,
+                                amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
+                                currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+                                ref: 'rumplesandco'+(Math.random() + 42421), // Replace with a reference you generated
+                                callback: function(responsea) {
+                                //this happens after the payment is completed successfully
+                                var reference = responsea.reference;
+                                alert('Payment complete! Reference: ' + reference);
+                                $.ajax({
+                                    method: "POST",
+                                    url: "/place-order",
+                                    data: {
+                                        'fname':response.firstname,
+                                        'lastname':response.lastname,
+                                        'email':Math.random()+"test@mail.com",
+                                        'phone':response.phone,
+                                        'address':response.address,
+                                        'address2':response.address2,
+                                        'city':response.city,
+                                        'state':response.state,
+                                        'country':response.country,
+                                        'postcode':response.postcode,
+                                        'payment_mode':"Paid by paystack",
+                                        'payment_id':responsea.reference,
+                                    },
+                                    success: function (responseb) {
+                                        alert(responseb.status)
+                                        window.location.href = "/";
+                                    }
+                                });
+                                // Make an AJAX call to your server with the reference to verify the transaction
+                                },
+                                onClose: function() {
+                                alert('Transaction was not completed, window closed.');
+                                },
+                        });
+                        handler.openIframe();
+                    // }
                 }
             });
         }

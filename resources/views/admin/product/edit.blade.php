@@ -112,11 +112,22 @@
                       <div class="form-group">
                           <label for="image">Image</label>
                           <input type="file" value="" name='image' class="form-control" id="inputGroupFile02">
-                      </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image 1</label>
+                            <input type="file" name='image1' class="form-control" id="inputGroupFile02">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image 2</label>
+                            <input type="file" name='image2' class="form-control" id="inputGroupFile02">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image 3</label>
+                            <input type="file" name='image3' class="form-control" id="inputGroupFile02">
+                        </div>
                         <div class="form-group">
                             <input type="submit" value="add" name="submit" class="btn btn-secondary" id="slug">
                         </div>
-
                     </form>
                   </div>
                 </div>

@@ -41,7 +41,6 @@ class CheckoutController extends Controller
             $total += $item->products->price;
         }
 
-
         $order = new Order();
         $order->user_id = Auth::id();
         $order->fname = $request->input('fname');
@@ -53,7 +52,14 @@ class CheckoutController extends Controller
         $order->city = $request->input('city');
         $order->state = $request->input('state');
         $order->country = $request->input('country');
+        $order->postcode = $request->input('postcode');
 
+        $order->payment_mode = $request->input('payment_mode');
+        $order->payment_id = $request->input('payment_id');
+
+
+
+        // to calculate the total amount
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
         foreach($cartitems_total as $item)
@@ -93,11 +99,21 @@ class CheckoutController extends Controller
             $user->update();
         }
 
+        foreach($cartitems as $item)
+        {
+            $removeItem = Product::where('id', $item->product_id)->get();
+            // $removeItem = Product::where('user_id', Auth::id())->get();
+        }
+        Product::destroy($removeItem);
+
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
 
-        $products = Product::where('user_id', Auth::id())->get();
-        Product::destroy($products);
+
+        if($request->input('payment_mode') == "Paid by paystack")
+        {
+            return response()->json(['status'=> 'Order placed successfully'], 200);
+        }
 
         return redirect('/')->with('status', 'Order placed successfully');
 

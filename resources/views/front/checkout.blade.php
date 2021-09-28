@@ -108,36 +108,12 @@
                         <p class="total_price">Total Price: {{ $total }}</p>
                         <input type="hidden" value="{{ $total }}" id="amount">
                         {{-- <button type="submit" class="btn btn-success btn-lg w-100 float-end"><i class="far fa-money-bill-alt"></i>  Place order | COD</button> --}}
-                        <button type="submit" class="btn btn-unique btn-lg w-100 mt-3 paystack-btn" onclick="payWithPaystack(event)">Pay</button>
+                        <button type="submit" style="font-weight: bold; font-size: 16px !important;" class="btn btn-primary btn-lg w-100 mt-3 payWithPaystack paystack-btn" onclick="payWithPaystack(event)">Pay now</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-    <script>
-        var paymentForm = document.getElementById('paymentForm');
-            paymentForm.addEventListener('submit', payWithPaystack, false);
-            function payWithPaystack(e) {
-                e.preventDefault();
-                var handler = PaystackPop.setup({
-                    key: 'pk_live_d7649c28db3fb576f5a2d174942b8d90cfdaf899', // Replace with your public key
-                    email: document.getElementById('email').value,
-                    amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
-                    currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
-                    ref: ''+(Math.random() + 10000000000) + 1, // Replace with a reference you generated
-                    callback: function(response) {
-                    //this happens after the payment is completed successfully
-                    var reference = response.reference;
-                    alert('Payment complete! Reference: ' + reference);
-                    // Make an AJAX call to your server with the reference to verify the transaction
-                    },
-                    onClose: function() {
-                    alert('Transaction was not completed, window closed.');
-                    },
-            });
-            handler.openIframe();
-        }
-    </script>
 </div>
 
 @endsection

@@ -9,7 +9,7 @@ body {
 }
 .navbar-expand-lg .navbar-toggler .navbar-toggler-icon {
     background-image: url(/assets/img/menu.png);
-    padding-top: 81px;
+    padding-top: 40px;
 }
 .banner-image{
   background: url(../img/banner/1.gif);

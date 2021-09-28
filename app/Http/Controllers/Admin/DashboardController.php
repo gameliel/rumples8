@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Size;
 use App\Models\User;
+use SebastianBergmann\LinesOfCode\Counter;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,7 @@ class DashboardController extends Controller
         $sizes = Size::all()->take(10);
         $users = User::all()->take(10);
         $products = Product::all()->take(10);
-        return view('admin.dashboard', 
+        return view('admin.dashboard',
         compact('categories', 'brands', 'sizes', 'users', 'products'));
     }
 }

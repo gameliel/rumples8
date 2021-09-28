@@ -4,7 +4,7 @@
 
 <div class="container py-5">
     <div class="row mt-5">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-9 col-md-9">
             <div class="card1">
                 <div class="card-body">
                     <table class="table table-borderless">
@@ -23,9 +23,9 @@
                                     <td>{{ date('d-m-y', strtotime($item->created_at))}}</td>
                                     <td>{{ $item->tracking_no }}</td>
                                     <td>{{ $item->total_price}}</td>
-                                    <td>{{ $item->status === '0' ?'pending' : 'completed'}}</td>
+                                    <td>{{ $item->status === '1' ?'pending' : 'completed'}}</td>
                                     <td>
-                                        <a href="{{ url('/view-order/'.$item->id) }}" class="btn btn-success">View</a>
+                                        <a href="" type="hidden" class="btn btn-success"> <i class="fas fa-trash"></i>  Remove</a>
                                     </td>
                                 </tr>
                             @endforeach
