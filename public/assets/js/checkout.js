@@ -180,7 +180,7 @@ $(document).ready(function () {
                         // function (e) {
                             e.preventDefault();
                             var handler = PaystackPop.setup({
-                                key: 'pk_test_1f58ab1ee3fe3f82fb694283906171afc7e72a84', // Replace with your public key
+                                key: 'pk_live_d7649c28db3fb576f5a2d174942b8d90cfdaf899', // Replace with your public key
                                 name: document.getElementById('first-name') + document.getElementById('last-name').value,
                                 email: document.getElementById('email').value,
                                 amount: document.getElementById('amount').value * 100, // the amount value is multiplied by 100 to convert to the lowest currency unit
